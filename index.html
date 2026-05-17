@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jazz Café Zagreb - Digitalni Cjenik</title>
+    <style>
+        /* --- Temeljne Boje i Fontovi --- */
+        :root {
+            --bg-color: #06121f; /* Tamno sivo-plava */
+            --container-bg: #0c1a2b; /* Malo svjetlija verzija za kartice */
+            --text-main: #e0e6ed; /* Svijetlo siva za glavni tekst */
+            --text-muted: #a0aec0; /* Prigušena siva za detalje */
+            --accent-color: #cac147; /* Zlatno-žuta za naglaske/cijene */
+            --border-color: #111822;
+            
+            /* Moderni, čitljivi fontovi */
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-heading: 'Serif', serif; /* Malo klasičniji za "Jazz" vibe */
+        }
+
+        /* --- Globalni Stilovi --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            padding-bottom: 60px; /* Prostor za footer */
+        }
+
+        /* --- Header / Zaglavlje --- */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), var(--container-bg);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .brand-name {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .location {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- Glavni Kontejner (Fleksibilnost) --- */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr; /* Default: jedan stupac za mobitele */
+            gap: 30px;
+        }
+
+        /* Responsive: Dva stupca na širim ekranima (tableti/laptopi) */
+        @media (min-width: 768px) {
+            .main-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* --- Stilovi Kategorija/Sekcija --- */
+        .menu-section {
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            color: var(--text-main);
+            font-size: 1.8rem;
+        }
+
+        /* --- Stilovi Stavki Meni-ja (Grid za poravnanje) --- */
+        .menu-items {
+            display: grid;
+            gap: 15px;
+        }
+
+        .menu-item {
+            display: grid;
+            grid-template-columns: 1fr auto; /* Naziv | Cijena */
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .item-volume {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .item-price {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            white-space: nowrap; /* Spriječava lomljenje cijene */
+        }
+
+        /* --- Footer / Kontakt --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--container-bg);
+            border-top: 2px solid var(--border-color);
+            margin-top: auto;
+        }
+
+        .contact-title {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* --- Jednostavne SVG Ikone --- */
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-name">JAZZ CAFÉ</div>
+        <div class="location">ZAGREB</div>
+    </header>
+
+    <main class="main-container">
+
+        <div class="column-left menu-items-container">
+
+            <section class="menu-section">
+                <div class="section-header">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M2 21h18v-2H2M20 8h-2V5h2m0-2H4v13a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-5h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg>
+                    <h2>Topli Napitci</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item"><span class="item-name">KAVA</span><span class="item-price">2,20€</span></div>
+                    <div class="menu-item"><span class="item-name">KAVA S MLIJEKOM</span><span class="item-price">2,40€</span></div>
+                    <div class="menu-item"><span class="item-name">BIJELA KAVA</span><span class="item-price">3,20€</span></div>
+                    <div class="menu-item"><span class="item-name">KAVA BEZ KOFEINA</span><span class="item-price">3,00€</span></div>
+                    <div class="menu-item"><span class="item-name">KAVA BEZ KOFEINA S MLIJEKOM</span><span class="item-price">3,20€</span></div>
+                    <div class="menu-item"><span class="item-name">BIJELA KAVA BEZ KOFEINA</span><span class="item-price">3,80€</span></div>
+                    <div class="menu-item"><span class="item-name">NESCAFÉ</span><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><span class="item-name">CAROLANS CAFÉ</span><span class="item-price">5,20€</span></div>
+                    <div class="menu-item"><span class="item-name">MALIBU CAFÉ</span><span class="item-price">5,20€</span></div>
+                    <div class="menu-item"><span class="item-name">KAKAO</span><span class="item-price">3,20€</span></div>
+                    <div class="menu-item"><span class="item-name">ČAJ</span><span class="item-price">2,20€</span></div>
+                    <div class="menu-item"><span class="item-name">ČAJ S MEDOM I LIMUNOM</span><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><span class="item-name">VRUĆA ČOKOLADA</span><span class="item-price">3,60€</span></div>
+                    <div class="menu-item">
+                        <div class="item-details"><span class="item-name">MLIJEKO</span><span class="item-volume">0,05L</span></div>
+                        <span class="item-price">0,70€</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><span class="item-name">MED</span><span class="item-volume">POR.</span></div>
+                        <span class="item-price">0,70€</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu-section">
+                <div class="section-header">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M11.5 2C10.67 2 10 2.67 10 3.5V6H9V8H15V6H14V3.5C14 2.67 13.33 2 12.5 2h-1M9 10v12h6V10H9m1 2h1v8H10v-8m3 0h1v8h-1v-8z"/></svg>
+                    <h2>Bezalkoholna Pića</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item"><div class="item-details"><span class="item-name">UFF+COLLAGEN</span><span class="item-volume">0,25L</span></div><span class="item-price">4,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">UFF WATER+OXYGEN</span><span class="item-volume">0,25L</span></div><span class="item-price">4,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">UFF FAT BURN</span><span class="item-volume">0,25L</span></div><span class="item-price">5,20€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">COCKTAIL</span><span class="item-volume">0,25L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">COCA COLA</span><span class="item-volume">0,33L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">COCA COLA ZERO</span><span class="item-volume">0,33L</span></div><span class="item-price">3,80€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">FANTA</span><span class="item-volume">0,33L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SCHWEPPES</span><span class="item-volume">0,25L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">ORANGINA</span><span class="item-volume">0,25L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SOK NARANČA</span><span class="item-volume">0,20L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SOK JABUKA</span><span class="item-volume">0,20L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SOK ANANAS</span><span class="item-volume">0,25L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SOK MARELICA</span><span class="item-volume">0,20L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">CEDEVITA</span><span class="item-volume">0,20L</span></div><span class="item-price">2,70€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SOK BAZGA, MENTA</span><span class="item-volume">0,20L</span></div><span class="item-price">3,00€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SOK MALINA, LIMUNSKA-DJUMBIR</span><span class="item-volume">0,20L</span></div><span class="item-price">3,00€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">MINERALNA VODA</span><span class="item-volume">0,10L</span></div><span class="item-price">0,70€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">NEGAZIRANA VODA</span><span class="item-volume">0,50L</span></div><span class="item-price">2,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">LIMUNSKA TRAVA</span><span class="item-volume">0,33L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">HIDRA</span><span class="item-volume">0,50L</span></div><span class="item-price">3,60€</span></div>
+                </div>
+            </section>
+
+        </div> <div class="column-right menu-items-container">
+            
+            <section class="menu-section">
+                <div class="section-header">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M7.5 2C8.33 2 9 2.67 9 3.5v1H15v-1c0-.83.67-1.5 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5V10c0 3.31-2.69 6-6 6h-1v6H8v-6h-1c-3.31 0-6-2.69-6-6V3.5C2 2.67 2.67 2 3.5 2h1zM4 10a4 4 0 0 0 3.86 3.98l.14.02h8a4 4 0 0 0 4-4V7H4v3z"/></svg>
+                    <h2>Alkoholna Pića</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item"><div class="item-details"><span class="item-name">VINO</span><span class="item-volume">0,10L</span></div><span class="item-price">2,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">VINO KUHANO</span><span class="item-volume">0,20L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">JABUKOVAČA</span><span class="item-volume">0,50L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">PELINKOVAC BADEL</span><span class="item-volume">0,03L</span></div><span class="item-price">2,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">PELINKOVAC STRUKANI</span><span class="item-volume">0,03L</span></div><span class="item-price">3,00€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">PELINKOVAC ANTIK</span><span class="item-volume">0,03L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">PELINKOVAC ANTIK STRUKANI</span><span class="item-volume">0,03L</span></div><span class="item-price">3,80€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">TRAVARICA, KOMOVICA</span><span class="item-volume">0,03L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">ŽUTUJA, BISKA</span><span class="item-volume">0,03L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">BECHEROVKA</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">MEDICA (LIKER OD MEDA)</span><span class="item-volume">0,03L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">LIKER OD LIMUNA, ŠIPKA</span><span class="item-volume">0,03L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">LIKER OD SMOKVE, BOROVNICE</span><span class="item-volume">0,03L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">LIKER OD PELINA</span><span class="item-volume">0,03L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">VIŠNJEVAC, ORAHOVAC</span><span class="item-volume">0,03L</span></div><span class="item-price">2,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">VILJAMOVKA</span><span class="item-volume">0,03L</span></div><span class="item-price">3,60€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">ROSSI AMARO</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">ERBA LUIGIA ROSSI</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">TERANINO ROSSI</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">TERANINO SPRITZ</span><span class="item-volume">0,25L</span></div><span class="item-price">6,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">EPULON ROSSI</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">TRAVARICA ROSSI</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">LOZOVAČA MUŠKAT ŽUTI ROSSI</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">RUM DOMAĆI</span><span class="item-volume">0,03L</span></div><span class="item-price">2,20€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">RAMMAZZOTTI AMARO</span><span class="item-volume">0,03L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">CAMPARI BITTER</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">BEEFEATER GIN</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SAX GIN</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">HENDRICK’S GIN</span><span class="item-volume">0,03L</span></div><span class="item-price">4,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">STRANA VODKA</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">MALIBU RUM</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">HAVANA CLUB</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">BACARDI RUM</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">CAROLANS</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">BAILEYS IRISH CREAM</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">SOUTHERN COMFORT</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">JAGERMAISTER</span><span class="item-volume">0,03L</span></div><span class="item-price">3,30€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">UNDERBERG</span><span class="item-volume">0,03L</span></div><span class="item-price">4,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">VERMOUTH</span><span class="item-volume">0,05L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">BALLANTINE’S</span><span class="item-volume">0,03L</span></div><span class="item-price">3,50€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">JOHNNIE WALKER RED LABEL</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">JOHNNIE WALKER DOUBLE BLACK</span><span class="item-volume">0,03L</span></div><span class="item-price">6,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">JAMESON</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">TULLAMORE DEW</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">JACK DANIEL’S</span><span class="item-volume">0,03L</span></div><span class="item-price">3,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">CHIVAS REGAL 12 Y.O.</span><span class="item-volume">0,03L</span></div><span class="item-price">6,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">COGNAC V.S.</span><span class="item-volume">0,03L</span></div><span class="item-price">6,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">COGNAC V.S.O.P.</span><span class="item-volume">0,03L</span></div><span class="item-price">11,90€</span></div>
+                    <div class="menu-item"><div class="item-details"><span class="item-name">COGNAC X.O.</span><span class="item-volume">0,03L</span></div><span class="item-price">39,90€</span></div>
+                </div>
+            </section>
+
+        </div> </main>
+
+    <footer>
+        <p class="contact-title">Pratite nas i podijelite vaše trenutke!</p>
+        <a href="https://instagram.com/jazz_cafe_zagreb" target="_blank" class="social-link">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+            @jazz_cafe_zagreb
+        </a>
+    </footer>
+
+</body>
+</html>
