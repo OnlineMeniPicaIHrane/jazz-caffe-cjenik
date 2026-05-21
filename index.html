@@ -42,6 +42,12 @@
             text-align: center;
             padding: 50px 20px 25px 20px;
         }
+        .special-combo {
+    border-left: 3px solid var(--accent-gold);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
 
         .brand-name {
     font-family: var(--font-heading);
@@ -280,6 +286,7 @@
             <button class="filter-btn" onclick="filterMenu('topli', this)">Topli Napitci</button>
             <button class="filter-btn" onclick="filterMenu('bezalkoholni', this)">Bezalkoholna Pića</button>
             <button class="filter-btn" onclick="filterMenu('alkoholni', this)">Alkoholna Pića</button>
+            <button class="filter-btn" onclick="filterMenu('kombinacije', this)">Kombinacije</button>
         </nav>
     </div>
 
@@ -395,6 +402,64 @@
                 <div class="menu-item"><div class="item-details"><span class="item-name">Cognac X.O.</span><span class="item-volume">0,03L</span></div><span class="item-price">39,90€</span></div>
             </div>
         </section>
+        <!-- Kombinacije -->
+<section class="menu-section" data-category="kombinacije">
+    <div class="section-header">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <h2>Kombinacije</h2>
+    </div>
+    <div class="menu-items">
+        <div class="menu-item special-combo">
+            <div class="item-details">
+                <span class="item-name">🥃 6x Jack Daniel's & Coca Cola</span>
+                <span class="item-volume">(6 komada)</span>
+            </div>
+            <span class="item-price">80,00€</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <span class="item-name">🍸 Gin Tonic</span>
+                <span class="item-volume">(Beefeater + Schweppes)</span>
+            </div>
+            <span class="item-price">7,50€</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <span class="item-name">🥃 Whisky Cola</span>
+                <span class="item-volume">(Johnnie Walker + Cola)</span>
+            </div>
+            <span class="item-price">7,50€</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <span class="item-name">⚡ Vodka Energy</span>
+                <span class="item-volume">(Strana Vodka + Energy Drink)</span>
+            </div>
+            <span class="item-price">7,00€</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <span class="item-name">🍹 Rum Cola</span>
+                <span class="item-volume">(Bacardi + Coca Cola)</span>
+            </div>
+            <span class="item-price">7,00€</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <span class="item-name">🍸 Long Island Ice Tea</span>
+                <span class="item-volume">(5 vrsta alkoholnih pića)</span>
+            </div>
+            <span class="item-price">9,90€</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <span class="item-name">🍊 Campari Orange</span>
+                <span class="item-volume">(Campari + Sok naranče)</span>
+            </div>
+            <span class="item-price">7,50€</span>
+        </div>
+    </div>
+</section>
 
     </main>
 
