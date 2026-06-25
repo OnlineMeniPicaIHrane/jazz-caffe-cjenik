@@ -7,17 +7,18 @@
     <style>
         /* --- Moderne Varijable i Boje (Premium Dark Mode) --- */
         :root {
-            --bg-color: #0d1520; /* Ultra tamna ponoćno plava */
-            --card-bg: rgba(30, 49, 73, 0.4); /* Glassmorphism efekt */
+            --bg-color: #101925; /* Ultra tamna ponoćno plava */
+            --card-bg: rgba(8, 29, 54, 0.4); /* Glassmorphism efekt */
             --card-border: rgba(255, 255, 255, 0.06);
             --text-main: #f0f4f8; /* Čista, moderna svijetla boja */
             --text-muted: #8da2bb; /* Elegantna plavo-siva */
-            --accent-gold: #e2b469; /* Profinjeno zlato za cijene i aktivne elemente */
+            --accent-gold: #e6d11c; /* Profinjeno zlato za cijene i aktivne elemente */
             --accent-blue: #38bdf8; /* Ledeno plava za ikone */
             
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-main: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-heading: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
+
 
         /* --- Globalni Reset --- */
         * {
@@ -52,7 +53,7 @@
         .brand-name {
     font-family: var(--font-heading);
     font-size: 2.8rem;
-    font-weight: 700;
+    font-weight: 900;
     letter-spacing: 4px;
     margin-bottom: 6px;
     background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
@@ -193,9 +194,10 @@
 
         .menu-section .menu-item .item-details,
         .menu-section .menu-item .item-price {
-            background: #142132; /* Boja kartice kako bi sakrila točkice */
+            background: #ffef090a; /* Boja kartice kako bi sakrila točkice */
             padding-right: 6px;
             padding-left: 2px;
+            
         }
 
         .item-name {
@@ -271,12 +273,67 @@
         .social-link .icon {
             fill: var(--accent-gold);
         }
+
+        /* --- CRNI BANNER S KONSTANTNIM KLIZEĆIM TEKSTOM --- */
+        #top-banner {
+            background: #df23c0da;
+            background-color: #e6bc3115;
+            color: #ffffff;
+            height: 44px;
+            overflow: hidden;          /* Skriva tekst koji izlazi iz okvira */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: var(--font-main);
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Kontejner u kojem se nalaze kopije teksta */
+        #banner-scroll {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-right 20s linear infinite;  /* 20s = brzina, možeš prilagoditi */
+        }
+
+        /* Svaka kopija teksta */
+        #banner-scroll span {
+            padding: 0 2rem;           /* Razmak između ponavljanja teksta */
+            flex-shrink: 0;            /* Sprečava skupljanje */
+        }
+
+        /* Ključni okvir za pomicanje udesno */
+        @keyframes scroll-right {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);  /* Pomak za pola ukupne širine (jer imamo 2 kopije) */
+            }
+        }
+
+        /* --- POMAKNI FILTER NAVIGACIJU (visina bannera je 44px) --- */
+        .filter-nav-wrapper {
+            position: sticky;
+            top: 44px;  /* Isto kao visina bannera */
+            /* Ostali tvoji stilovi ostaju nepromijenjeni */
+        }
+
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@qpokychuk/sf-pro-display@1.0.2/index.min.css">
 </head>
 <body>
+     <!-- NOVI BANNER NA VRHU -->
+    <div id="top-banner">
+        <span id="banner-scroll"></span>
+    </div>
 
     <header>
-        <div class="brand-name">Caffe Bar Jazz</div>
+        <div class="brand-name">Jazz Cafe Bar</div>
         <div class="location">ZAGREB</div>
     </header>
 
@@ -294,7 +351,6 @@
 
         <section class="menu-section" data-category="topli">
             <div class="section-header">
-                <svg class="icon" viewBox="0 0 24 24"><path d="M2 21h18v-2H2M20 8h-2V5h2m0-2H4v13a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-5h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg>
                 <h2>Topli Napitci</h2>
             </div>
             <div class="menu-items">
@@ -318,7 +374,6 @@
 
         <section class="menu-section" data-category="bezalkoholni">
             <div class="section-header">
-                <svg class="icon" viewBox="0 0 24 24"><path d="M11.5 2C10.67 2 10 2.67 10 3.5V6H9V8H15V6H14V3.5C14 2.67 13.33 2 12.5 2h-1M9 10v12h6V10H9m1 2h1v8H10v-8m3 0h1v8h-1v-8z"/></svg>
                 <h2>Bezalkoholna Pića</h2>
             </div>
             <div class="menu-items">
@@ -505,6 +560,23 @@
                 });
             }
         }
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- TEKST KOJI ĆE SE VRTJETI (možeš promijeniti) ---
+            const text = "Dobrodošli u Jazz Café • Premium cjenik • Uživajte u vrhunskoj kavi i predivnoj jazz glazbi";
+
+            const container = document.getElementById('banner-scroll');
+
+            // Stvorimo 2 kopije teksta (dovoljno za beskonačni scroll)
+            for (let i = 0; i < 2; i++) {
+                const span = document.createElement('span');
+                span.textContent = text;
+                container.appendChild(span);
+            }
+        });
+
+
     </script>
 
 </body>
